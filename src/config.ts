@@ -124,16 +124,21 @@ const setupDBs = async (
   notion: NotionClient,
 ): Promise<StrictConfigInterface["databases"]> => {
   let {authors, articles} = databases
+  console.log("Authors:")
+  console.log(authors)
+  console.log(typeof authors)
+  console.log("Articles:")
+  console.log(articles)
+  console.log(typeof articles)
 
   if (_.isString(authors)) {
+    console.log("Authors is string")
     let dbID: string = isValidPageID(authors) ?? await getDBbyName(notion, authors)
     databases.authors = <AuthorsDB>{
       databaseID: <string>dbID,
       articleRef: "Articles",
       primaryKey: "name",
     }
-  } else if (!_.isNil(authors)) {
-    databases.authors = undefined
   }
 
   if (_.isString(articles)) {
@@ -144,7 +149,10 @@ const setupDBs = async (
       primaryKey: "ID",
     }
   }
-
+  console.log("_.isString(databases.articles)")
+  console.log(_.isString(databases.articles))
+  console.log("_.isString(databases.authors)")
+  console.log(_.isString(databases.authors))
   if (_.isString(databases.articles) || _.isString(databases.authors)) {
     throw new Error("Failed to convert string to object. Please open a bug report on GitHub.")
   }

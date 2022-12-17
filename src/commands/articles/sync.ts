@@ -66,7 +66,7 @@ export default class ArticlesSync extends BaseCommand {
       if (counter % 100 == 0) {
         endTime = performance.now()
         const time: string = `${(endTime - startTime) / 1000 / 60}min`
-        console.log(`Cumulative time: ~${time}.`)
+        console.log(`${counter} - Cumulative time: ~${time}.`)
       }
 
       counter++

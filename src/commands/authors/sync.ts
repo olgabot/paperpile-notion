@@ -19,6 +19,8 @@ export default class AuthorsSync extends BaseCommand {
 
   public async run(): Promise<void> {
     await this.parse(AuthorsSync)
+    // console.log("local module")
+    // console.log(JSON.stringify(this.appConfig, null, 2))
 
     if (!this.appConfig.hasAuthorDB) {
       this.error("You don't have an Authors database. Exiting.")
